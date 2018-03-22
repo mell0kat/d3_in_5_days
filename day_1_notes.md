@@ -1,7 +1,7 @@
+
+## d3 Overview
 * Can build d3 visualizations in HTML and / or SVG
-
 * SVG graphics provide resolution independence - looks good anywhere
-
 * SVG graphics do not participate in normal browser layout flow
 
 ### Core Concepts
