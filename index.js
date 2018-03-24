@@ -5,6 +5,16 @@ const data = [
   { name: 'David', math: 64, science: 76 },
   { name: 'Emily', math: 80, science: 94 }
 ]
+const width = 600
+const height = 400
+
+const xScale = d3.scaleLinear()
+	.domain([0, 100])
+	.range([0, width])
+
+const yScale = d3.scaleBand()
+	.domain(data.map(d => d.name))
+	.range([0, height])
 
 const render = (subject) => {
 
@@ -21,7 +31,8 @@ const render = (subject) => {
 	// combine the selections so you can act on them together
 	newBars.merge(bars)
 	.transition()
-	.style('width', d => `${d[subject]}px`)
+	.style('width', d => `${xScale(d[subject])}px`)
+	.style('height', d => `${yScale.bandwidth()}px`)
 }
 
 render('math')
