@@ -5,8 +5,9 @@ const data = [
   { name: 'David', math: 64, science: 76 },
   { name: 'Emily', math: 80, science: 94 }
 ]
-const width = 600
-const height = 400
+const margin =  { top: 10, right: 10, bottom: 20, left: 50}
+const width = 600 - margin.left - margin.right
+const height = 400 - margin.top - margin.bottom
 
 const xScale = d3.scaleLinear()
 	.domain([0, 100])
@@ -15,6 +16,23 @@ const xScale = d3.scaleLinear()
 const yScale = d3.scaleBand()
 	.domain(data.map(d => d.name))
 	.range([0, height])
+
+const svg = d3.select('#chart')
+	.append('svg')
+	.attr('width', width)
+	.attr('height', height)
+	.style('position', 'absolute')
+	.style('top', 0)
+
+const axisContainer = svg.append('g')
+  .attr('transform', `translate(${margin.left}, ${margin.top})`)
+
+axisContainer.append('g')
+  .attr('transform', `translate(0, ${height})`)
+  .call(d3.axisBottom(xScale))
+
+axisContainer.append('g')
+  .call(d3.axisLeft(yScale)) // we don't have to move this at all now
 
 const render = (subject) => {
 
