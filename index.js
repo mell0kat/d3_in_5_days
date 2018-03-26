@@ -19,10 +19,11 @@ const yScale = d3.scaleBand()
 
 const svg = d3.select('#chart')
 	.append('svg')
-	.attr('width', width)
-	.attr('height', height)
+	.attr('width', width + margin.left + margin.right)
+	.attr('height', height + margin.top + margin.bottom)
 	.style('position', 'absolute')
 	.style('top', 0)
+	.style('left', 0)
 
 const axisContainer = svg.append('g')
   .attr('transform', `translate(${margin.left}, ${margin.top})`)
@@ -50,7 +51,7 @@ const render = (subject) => {
 	newBars.merge(bars)
 	.transition()
 	.style('width', d => `${xScale(d[subject])}px`)
-	.style('height', d => `${yScale.bandwidth()}px`)
+	.style('height', d => `${yScale.bandwidth() - 2}px`)
 }
 
 render('math')
