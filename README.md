@@ -1,6 +1,6 @@
 # d3_in_5_days
 
-![Alt text](barChart.png?raw=true "Title")
+![Alt text](barChart.png?raw=true "Animated Bar Chart")
 
 My journey through the 5-day d3 course (provided by Ben Clinkinbeard)
 
